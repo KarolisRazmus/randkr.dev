@@ -1,0 +1,43 @@
+body {
+
+    background-color: #FF8000;
+
+}
+
+#title h1 {
+
+    font-size: 7rem;
+    text-align: center;
+
+}
+
+.hidden {
+
+    display: none;
+
+}
+
+#register-body, #level_select-body, #game_start-body, #game_over-body {
+
+    margin-top: 10%;
+
+}
+
+#register-input, #game-over-input {
+
+    text-align: center;
+
+}
+
+#register-button {
+
+    font-weight: bold;
+
+}
+
+.gold {
+    color: yellow;
+    font-size: 30px;
+    font-weight: bold;
+    background-color: black;
+}
