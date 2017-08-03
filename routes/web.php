@@ -14,3 +14,9 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/zaidimas', function () {
+    return view('pages.game');
+});
+
+Route::resource('game', 'GameController');

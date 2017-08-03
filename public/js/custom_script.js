@@ -18,6 +18,13 @@ var FastTyping = function () {
     var gold = false;
     var charSet = 'abcdefghijklmnopqrstuvwxyz';
 
+    var saveULR;
+
+    this.setSaveURL = function (value)
+    {
+        saveULR = value;
+    };
+
 
 // ---------------------------         RegisterLogics        ---------------------------------
 
@@ -141,6 +148,9 @@ var FastTyping = function () {
         var letterAppearanceTime;
         var keyUpTime;
         var duration;
+        var totalDuration = 0;
+        var averageSpeedDuration;
+        var totalKeyup = 0;
 
         this.show = function()
         {
@@ -158,6 +168,7 @@ var FastTyping = function () {
             // input.unbind();
             // button.unbind();
             userAction = true;
+
 
         }
 
@@ -219,7 +230,13 @@ var FastTyping = function () {
 
                 duration = (keyUpTime - letterAppearanceTime) / 1000;
 
+                totalDuration += duration;
+                totalKeyup++;
+                averageSpeedDuration = totalDuration / totalKeyup;
+
                 console.log(duration);
+                console.log(totalDuration);
+                console.log(averageSpeedDuration);
 
                 if(myKey === $( "#letterToType" ).text())
                 {
@@ -288,6 +305,8 @@ var FastTyping = function () {
 
             view.removeClass( "hidden" );
 
+            enable()
+
         }
 
         this.hide = function()
@@ -300,13 +319,23 @@ var FastTyping = function () {
         function enable()
         {
 
-            // input.keyup(function(){
-            // if(input.val().length >= 3)
-            // 	button.prop('disabled', false);
-            // else
-            // 	button.prop('disabled', true);
 
-            // });
+            saveResult();
+
+            function saveResult() {
+
+                $.ajax({
+                    url: saveULR,
+                    method: "POST",
+                    data: {
+                        name: name,
+                        level: level,
+                        score: score,
+                        game_time: 'kuku',
+                        speed_time: 'averageSpeedDuration',
+                    }
+                });
+            }
 
             button.click(function () {
                 // name = input.val();
@@ -317,11 +346,7 @@ var FastTyping = function () {
 
                 changeState(STATE_LEVEL_SELECTION);
             });
-
         }
-
-
-
     }
 
     var game_over = new GameOverLogics();
