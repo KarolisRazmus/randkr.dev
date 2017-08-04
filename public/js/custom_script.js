@@ -153,6 +153,7 @@ var FastTyping = function () {
         var duration;
         var totalDuration = 0;
         var totalKeyup = 0;
+        var timeout;
 
         this.show = function()
         {
@@ -305,6 +306,7 @@ var FastTyping = function () {
 
         var view = $('#game_over-body');
         var button = $('#game-over-button');
+        var input = $('#game-over-input');
 
         this.show = function()
         {
@@ -312,6 +314,26 @@ var FastTyping = function () {
             view.removeClass( "hidden" );
 
             enable()
+
+            console.log('einaaaa! 1');
+
+            window.onload = function() {
+
+                document.getElementById("#results").onclick = function () {
+
+                    console.log('einaaaa! 2 ');
+
+
+                    $("#results").link.setAttribute("href", "results");
+
+                    // document.getElementById("#results").href="resultssssss";
+                    // $("#w3s").attr("href", "https://www.w3schools.com/jquery");
+                    // window.location("results");
+                    // location.href = "results/NORMAL";
+                    return false;
+                }
+
+            }
 
         }
 
@@ -349,7 +371,8 @@ var FastTyping = function () {
                 button.unbind();
                 input.val('');
 
-                changeState(STATE_LEVEL_SELECTION);
+
+                changeState(STATE_REGISTER);
             });
         }
     }

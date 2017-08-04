@@ -18,7 +18,7 @@ class GameController extends Controller
 
         $games =  Game::where('level', $level)->get()->sortByDesc('score');
 
-        return view('welcome')->with('games', $games);
+        return view('results')->with('games', $games);
     }
 
     /**

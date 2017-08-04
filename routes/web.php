@@ -15,7 +15,7 @@
 //    return view('welcome');
 //});
 
-Route::get('/results', 'GameController@index');
+Route::get('/results/{$level}', 'GameController@index');
 
 Route::get('/zaidimas', function () {
     return view('pages.game');
