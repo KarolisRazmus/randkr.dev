@@ -11,9 +11,11 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+//Route::get('/', function () {
+//    return view('welcome');
+//});
+
+Route::get('/results', 'GameController@index');
 
 Route::get('/zaidimas', function () {
     return view('pages.game');

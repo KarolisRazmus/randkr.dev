@@ -82,6 +82,14 @@
                     Laravel
                 </div>
 
+                <div>
+                    @foreach($games as $game)
+
+                        <li>{{$game->name}} scores {{$game->score}}</li>
+
+                    @endforeach
+                </div>
+
                 <div class="links">
                     <a href="https://laravel.com/docs">Documentation</a>
                     <a href="https://laracasts.com">Laracasts</a>

@@ -17,7 +17,10 @@ var FastTyping = function () {
     var userAction = true;
     var gold = false;
     var charSet = 'abcdefghijklmnopqrstuvwxyz';
-
+    var gameStartTime;
+    var gameEndTime;
+    var gameTotalTime;
+    var averageSpeedDuration;
     var saveULR;
 
     this.setSaveURL = function (value)
@@ -149,14 +152,13 @@ var FastTyping = function () {
         var keyUpTime;
         var duration;
         var totalDuration = 0;
-        var averageSpeedDuration;
         var totalKeyup = 0;
 
         this.show = function()
         {
 
             view.removeClass( "hidden" );
-
+            gameStartTime = Date.now();
             enable();
 
         }
@@ -168,7 +170,9 @@ var FastTyping = function () {
             // input.unbind();
             // button.unbind();
             userAction = true;
+            gameEndTime = Date.now();
 
+            gameTotalTime = (gameEndTime - gameStartTime) / 1000;
 
         }
 
@@ -196,12 +200,14 @@ var FastTyping = function () {
             timeout = setTimeout(function() { changeLetter(); }, delay);
 
             if(delay == 1500){
-                $(".level").html('FAST!!');
+                level = 'FAST!!';
             } else if(delay == 2000) {
-                $(".level").html('NORMAL');
+                level = 'NORMAL';
             } else {
-                $(".level").html('SLOW...');
+                level = 'SLOW...';
             }
+
+            $(".level").html(level);
 
             userAction = false;
 
@@ -331,8 +337,8 @@ var FastTyping = function () {
                         name: name,
                         level: level,
                         score: score,
-                        game_time: 'kuku',
-                        speed_time: 'averageSpeedDuration',
+                        game_time: gameTotalTime,
+                        speed_time: averageSpeedDuration,
                     }
                 });
             }

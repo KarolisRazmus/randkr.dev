@@ -14,7 +14,11 @@ class GameController extends Controller
      */
     public function index()
     {
-        //
+        $level = 'NORMAL';
+
+        $games =  Game::where('level', $level)->get();
+
+        return view('welcome')->with('games', $games);
     }
 
     /**
@@ -36,6 +40,8 @@ class GameController extends Controller
     public function store(Request $request)
     {
         $data = request()->all();
+
+        Game::create($data);
 
         dd($data);
     }
