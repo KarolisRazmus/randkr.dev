@@ -22,3 +22,4 @@ Route::get('/zaidimas', function () {
 });
 
 Route::resource('game', 'GameController');
+

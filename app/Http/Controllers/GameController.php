@@ -12,11 +12,11 @@ class GameController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($level)
     {
         $level = 'NORMAL';
 
-        $games =  Game::where('level', $level)->get();
+        $games =  Game::where('level', $level)->get()->sortByDesc('score');
 
         return view('welcome')->with('games', $games);
     }

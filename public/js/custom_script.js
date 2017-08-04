@@ -325,7 +325,6 @@ var FastTyping = function () {
         function enable()
         {
 
-
             saveResult();
 
             function saveResult() {
